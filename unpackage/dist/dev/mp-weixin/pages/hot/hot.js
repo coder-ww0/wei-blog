@@ -107,7 +107,10 @@ try {
       return __webpack_require__.e(/*! import() | components/my-search/my-search */ "components/my-search/my-search").then(__webpack_require__.bind(null, /*! @/components/my-search/my-search.vue */ 37))
     },
     myTabs: function() {
-      return __webpack_require__.e(/*! import() | components/my-tabs/my-tabs */ "components/my-tabs/my-tabs").then(__webpack_require__.bind(null, /*! @/components/my-tabs/my-tabs.vue */ 47))
+      return __webpack_require__.e(/*! import() | components/my-tabs/my-tabs */ "components/my-tabs/my-tabs").then(__webpack_require__.bind(null, /*! @/components/my-tabs/my-tabs.vue */ 44))
+    },
+    hotListItem: function() {
+      return __webpack_require__.e(/*! import() | components/hot-list-item/hot-list-item */ "components/hot-list-item/hot-list-item").then(__webpack_require__.bind(null, /*! @/components/hot-list-item/hot-list-item.vue */ 51))
     }
   }
 } catch (e) {
@@ -163,6 +166,16 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));
+
+
+
+
+
+
+
+
+
+
 
 
 

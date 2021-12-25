@@ -2,9 +2,19 @@
 	<view class="hot-container">
 		<image class="logo" src="@/static/images/logo.png" mode="aspectFit" />
 		<!-- 组件可以直接进行使用，无需进行注册 -->
+		<!--
+		:config= "{
+			textColor: '#00ff00',
+			activeTextColor: '#ff00ff'
+			}"
+		-->
 		<view class="search-box">
 			<my-search placeholderText="输入搜索框"></my-search>
-			<my-tabs :tabData="tabData" :defaultIndex="currentIndex"></my-tabs>
+			<my-tabs :tabData="tabData" :defaultIndex="currentIndex"
+			></my-tabs>
+		</view>
+		<view>
+			<hot-list-item v-for="(item, index) in 50" :key="index"></hot-list-item>
 		</view>
 	</view>
 </template>
@@ -29,7 +39,7 @@ export default {
 		async loadHotTabs() {
 			const { data : res} = await getHotTabs();
 			this.tabData = res.list;
-		}
+		},
 	}
 };
 </script>
