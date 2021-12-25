@@ -218,6 +218,8 @@ var _default2 =
       // 最新值val
       handler: function handler(val) {
         this.activeIndex = val;
+        // 重新计算滑块的位置
+        this.tabToIndex();
       },
       // 当前的handler回调会在侦听开始之后被立即调用
       immediate: true },
@@ -272,6 +274,9 @@ var _default2 =
         * 根据当前的activeIndex
         */
     tabToIndex: function tabToIndex() {
+      if (this.tabList.length === 0) {
+        return;
+      }
       // 获取到当前的activeIndex
       var index = this.activeIndex;
       this.slider = {

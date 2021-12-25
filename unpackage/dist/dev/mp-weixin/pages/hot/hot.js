@@ -109,6 +109,9 @@ try {
     myTabs: function() {
       return __webpack_require__.e(/*! import() | components/my-tabs/my-tabs */ "components/my-tabs/my-tabs").then(__webpack_require__.bind(null, /*! @/components/my-tabs/my-tabs.vue */ 44))
     },
+    uniLoadMore: function() {
+      return Promise.all(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-load-more/components/uni-load-more/uni-load-more")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 71))
+    },
     hotListItem: function() {
       return __webpack_require__.e(/*! import() | components/hot-list-item/hot-list-item */ "components/hot-list-item/hot-list-item").then(__webpack_require__.bind(null, /*! @/components/hot-list-item/hot-list-item.vue */ 51))
     }
@@ -165,7 +168,32 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 18));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -193,11 +221,27 @@ var _hot = __webpack_require__(/*! api/hot.js */ 21);function _interopRequireDef
   data: function data() {
     return {
       tabData: [],
-      currentIndex: 0 };
+      // 激活项
+      currentIndex: 0,
+      isLoading: true,
+      // 以index为key，以对应的list为value
+      listData: {},
+      // 当前swiper的高度
+      currentSwiperHeight: 0,
+      // 缓存高度的计算结果,以index为key, 以对应的高度为value
+      swiperHeightData: {},
+      // 当前的滚动距离
+      currentPageScrollTop: 0 };
 
   },
   created: function created() {
     this.loadHotTabs();
+  },
+  /**
+      * 监听页面的滚动
+      */
+  onPageScroll: function onPageScroll(res) {
+    this.currentPageScrollTop = res.scrollTop;
   },
   methods: {
     /**
@@ -205,8 +249,90 @@ var _hot = __webpack_require__(/*! api/hot.js */ 21);function _interopRequireDef
               */
     loadHotTabs: function loadHotTabs() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var _yield$getHotTabs, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
                   (0, _hot.getHotTabs)());case 2:_yield$getHotTabs = _context.sent;res = _yield$getHotTabs.data;
-                _this.tabData = res.list;case 5:case "end":return _context.stop();}}}, _callee);}))();
+                _this.tabData = res.list;
+                _this.loadHostListFromTab();case 6:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    /**
+        * 获取list列表
+        * 1. 没有获取到数据
+        * 		1.1 展示loading
+        * 		1.2 调用接口获取数据
+        * 		1.3 把数据保存到本地
+        * 		1.4 隐藏Loading
+        * 	2. 已经获取到数据（有了缓存之后）
+        * 		2.1 直接渲染数据就可以了
+        */
+    loadHostListFromTab: function loadHostListFromTab() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var id, _yield$getHotListFrom, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:if (
+                _this2.listData[_this2.currentIndex]) {_context3.next = 10;break;}
+                _this2.isLoading = true;
+                id = _this2.tabData[_this2.currentIndex].id;_context3.next = 5;return (
+                  (0, _hot.getHotListFromTabType)(id));case 5:_yield$getHotListFrom = _context3.sent;res = _yield$getHotListFrom.data;
+                // 把数据保存到本地
+                _this2.listData[_this2.currentIndex] = res.list;
+                _this2.isLoading = false;
+                // 渲染完数据之后，计算高度
+                // this.$nextTick()存在一定的兼容性问题
+                setTimeout( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+
+                            _this2.getCurrentSwiperHeight());case 2:_this2.currentSwiperHeight = _context2.sent;
+                          // 放入缓存
+                          _this2.swiperHeightData[_this2.currentIndex] = _this2.currentSwiperHeight;case 4:case "end":return _context2.stop();}}}, _callee2);})),
+                0);case 10:case "end":return _context3.stop();}}}, _callee3);}))();
+
+
+
+
+    },
+    /**
+        * 获取子组件tabs的点击事件，取得激活项
+        */
+    onTabClick: function onTabClick(index) {
+      this.currentIndex = index;
+      this.loadHostListFromTab();
+    },
+    /**
+        * swiper 动画完成
+        */
+    onSwiperEnd: function onSwiperEnd() {
+      // 计算缓存是否存在，不存在再去获取数据
+      if (!this.listData[this.currentIndex]) {
+        this.loadHostListFromTab();
+        return;
+      }
+      this.currentSwiperHeight = this.swiperHeightData[this.currentIndex];
+    },
+    /**
+        * 计算当前swiper高度
+        */
+    getCurrentSwiperHeight: function getCurrentSwiperHeight() {var _this3 = this;
+      // 1. 拿到所有的item -> 异步
+      // 2. 拿到所有item的高度
+      // 3. 把所有的高度累加
+      return new Promise(function (resolve, reject) {
+        var sum = 0;
+        // 拿到所有的 item -> 异步
+        var query = uni.createSelectorQuery().in(_this3);
+        query.
+        selectAll(".hot-list-item-".concat(_this3.currentIndex)).
+        boundingClientRect(function (res) {
+          res.forEach(function (item) {
+            sum += item.height;
+          });
+          resolve(sum);
+        }).exec();
+
+      });
+    },
+    onSwiperChange: function onSwiperChange(e) {
+      this.currentIndex = e.detail.current;
+      // 控制列表的滚动位置
+      if (this.currentPageScrollTop > 130) {
+        uni.pageScrollTo({
+          scrollTop: 130 });
+
+      }
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 /* 18 */,

@@ -102,6 +102,8 @@ export default {
 			// 最新值val
 			handler(val) {
 				this.activeIndex = val;
+				// 重新计算滑块的位置
+				this.tabToIndex();
 			},
 			// 当前的handler回调会在侦听开始之后被立即调用
 			immediate: true
@@ -156,6 +158,9 @@ export default {
 		 * 根据当前的activeIndex
 		 */
 		tabToIndex() {
+			if (this.tabList.length === 0) {
+				return;
+			}
 			// 获取到当前的activeIndex
 			const index = this.activeIndex;
 			this.slider = {
