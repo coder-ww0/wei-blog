@@ -9,3 +9,14 @@ export function getDefaultText() {
 		url: '/search/default-text'
 	})
 }
+
+
+/**
+ * 热搜搜索列表
+ */
+
+export function getSearchHotList() {
+	return request({
+		url: '/search/hot-list'
+	})
+}

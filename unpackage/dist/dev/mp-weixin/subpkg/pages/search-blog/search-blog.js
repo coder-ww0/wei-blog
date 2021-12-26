@@ -195,6 +195,9 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
 var _search = __webpack_require__(/*! @/api/search.js */ 121);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
 // 热搜列表
 var HOT_LIST = '0';
@@ -215,7 +218,8 @@ var SEARCH_RESULT = '2';var _default =
       // 默认情况下 || 点击了输入框的取消按钮，显示【热搜列表】
       // 当searchBar获取焦点的时 || 点击输入框清空按钮时，显示【搜索历史】
       // 当用户点击热搜列表篇item || 用户点击搜索历史item || 用户按下搜索键，显示【搜索结果】
-      showType: HOT_LIST };
+      showType: HOT_LIST,
+      searchData: [] };
 
   },
   created: function created() {
@@ -223,10 +227,13 @@ var SEARCH_RESULT = '2';var _default =
   },
   methods: {
     onSearchConfirm: function onSearchConfirm(val) {
-      console.log('onSearchConfirm');
-      // 假如val不存在，那么使用 【推荐的默认值】
+      // 用户未输入文本，直接搜索时，使用【推荐搜索文本】
       this.searchVal = val ? val : this.defaultText;
-      console.log(this.searchVal);
+      // 保存历史搜索数据
+      this.saveSearchData();
+      if (this.searchVal) {
+        this.showType = SEARCH_RESULT;
+      }
     },
     /**
         * 获取到焦点
@@ -251,6 +258,24 @@ var SEARCH_RESULT = '2';var _default =
                   (0, _search.getDefaultText)());case 2:_yield$getDefaultText = _context.sent;res = _yield$getDefaultText.data;
                 _this.defaultText = res.defaultText;
                 console.log(_this.defaultText);case 6:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    /**
+        * 保存搜索历史数据
+        */
+    saveSearchData: function saveSearchData() {var _this2 = this;
+      // 1.如果当前的搜索内容已存在,则原有的搜索内容需要被展示到搜索历史的头部，而不是新增一条搜索内容
+      // 2.如果当前的搜索内容不存在,则新的搜索内容会被展示在搜索历史的头部
+      var index = this.searchData.findIndex(function (item) {return item === _this2.searchVal;});
+      if (index !== -1) {
+        this.searchData.splice(index, 1);
+      }
+      this.searchData.unshift(this.searchVal);
+    },
+    onRemoveAllSearchData: function onRemoveAllSearchData() {
+      this.searchData = [];
+    },
+    onRemoveSearchData: function onRemoveSearchData(index) {
+      this.searchData.splice(index, 1);
     } } };exports.default = _default;
 
 /***/ }),

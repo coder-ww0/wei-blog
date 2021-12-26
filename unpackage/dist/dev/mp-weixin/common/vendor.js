@@ -3323,15 +3323,26 @@ function normalizeComponent (
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.getDefaultText = getDefaultText;var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 24));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.getDefaultText = getDefaultText;exports.getSearchHotList = getSearchHotList;var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 24));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 /**
-                                                                                                                                                                                                                                                                                        * 获取默认的搜索内容
-                                                                                                                                                                                                                                                                                        */
+                                                                                                                                                                                                                                                                                                                                    * 获取默认的搜索内容
+                                                                                                                                                                                                                                                                                                                                    */
 
 function getDefaultText() {
   return (0, _request.default)({
     url: '/search/default-text' });
+
+}
+
+
+/**
+   * 热搜搜索列表
+   */
+
+function getSearchHotList() {
+  return (0, _request.default)({
+    url: '/search/hot-list' });
 
 }
 

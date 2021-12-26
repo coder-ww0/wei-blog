@@ -105,7 +105,7 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"uni_modules/uni-load-more/components/uni-load-more/uni-load-more":1,"components/hot-list-item/hot-list-item":1,"components/my-search/my-search":1,"components/my-tabs/my-tabs":1,"components/hot-ranking/hot-ranking":1,"uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar":1,"uni_modules/uni-icons/components/uni-icons/uni-icons":1};
+/******/ 		var cssChunks = {"uni_modules/uni-load-more/components/uni-load-more/uni-load-more":1,"components/hot-list-item/hot-list-item":1,"components/my-search/my-search":1,"components/my-tabs/my-tabs":1,"components/seach-hot-list/seach-hot-list":1,"components/search-history/search-history":1,"components/hot-ranking/hot-ranking":1,"uni_modules/uni-search-bar/components/uni-search-bar/uni-search-bar":1,"uni_modules/uni-icons/components/uni-icons/uni-icons":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
