@@ -8,7 +8,7 @@
 			activeTextColor: '#ff00ff'
 			}"
 		-->
-		<view class="search-box">
+		<view class="search-box" @click="onToSearch">
 			<my-search placeholderText="输入搜索框"></my-search>
 		</view>
 		<view class="tab-sticky">
@@ -161,6 +161,15 @@ export default {
 					scrollTop: 130
 				})
 			}
+		},
+		/**
+		 * 跳转到search-blog
+		 */
+		onToSearch() {
+			console.log('点击事件')
+			uni.navigateTo({
+				url: '/subpkg/pages/search-blog/search-blog'
+			})
 		}
 	}
 };

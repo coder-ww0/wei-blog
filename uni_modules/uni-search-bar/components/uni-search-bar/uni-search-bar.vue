@@ -235,7 +235,8 @@ s<template>
 		overflow: hidden;
 		position: relative;
 		flex: 1;
-		justify-content: center;
+		/* 进行了修改*/
+		justify-content: start;
 		flex-direction: row;
 		align-items: center;
 		height: $uni-searchbar-height;
@@ -272,7 +273,8 @@ s<template>
 	.uni-searchbar__text-placeholder {
 		font-size: 14px;
 		color: #B3B3B3;
-		margin-left: 5px;
+		// margin-left: 5px; 清除默认框的抖动效果
+		margin-bottom: 1px !important;
 	}
 
 	.uni-searchbar__cancel {
