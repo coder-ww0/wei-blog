@@ -17,17 +17,9 @@
 			></my-search>
 		</view>
 		<!-- 热搜列表 -->
-		<view class="seach-hot-list-box card" v-if="showType === HOT_LIST">
-			<seach-hot-list @onSearch="onSearchConfirm"></seach-hot-list>
-			</view>
+		<view class="seach-hot-list-box card" v-if="showType === HOT_LIST"><seach-hot-list @onSearch="onSearchConfirm"></seach-hot-list></view>
 		<!-- 搜索历史 -->
-		<view class="search-history-box" v-else-if="showType === SEARCH_HISTORY">
-			<search-history
-			 @removeAllSearchData="onRemoveAllSearchData"
-			 @removeSearchData="onRemoveSearchData"
-			 @onItemClick="onRemoveSearchData"
-			 :searchData="searchData"></search-history>
-			</view>
+		<view class="search-history-box" v-else-if="showType === SEARCH_HISTORY"><search-history @onSearch="onSearchConfirm"></search-history></view>
 		<!-- 搜索结果 -->
 		<view class="search-result-list-box" v-else><search-result-list></search-result-list></view>
 	</view>
@@ -35,6 +27,7 @@
 
 <script>
 import { getDefaultText } from '@/api/search.js';
+import { mapMutations } from 'vuex';
 // 热搜列表
 const HOT_LIST = '0';
 // 热搜历史
@@ -54,19 +47,19 @@ export default {
 			// 默认情况下 || 点击了输入框的取消按钮，显示【热搜列表】
 			// 当searchBar获取焦点的时 || 点击输入框清空按钮时，显示【搜索历史】
 			// 当用户点击热搜列表篇item || 用户点击搜索历史item || 用户按下搜索键，显示【搜索结果】
-			showType: HOT_LIST,
-			searchData: []
+			showType: HOT_LIST
 		};
 	},
 	created() {
 		this.loadDefaultText();
 	},
 	methods: {
+		...mapMutations('search', ['addSearchData', 'removeAllSearchData']),
 		onSearchConfirm(val) {
 			// 用户未输入文本，直接搜索时，使用【推荐搜索文本】
 			this.searchVal = val ? val : this.defaultText;
 			// 保存历史搜索数据
-			this.saveSearchData();
+			this.addSearchData(this.searchVal);
 			if (this.searchVal) {
 				this.showType = SEARCH_RESULT;
 			}
@@ -94,25 +87,25 @@ export default {
 			const { data: res } = await getDefaultText();
 			this.defaultText = res.defaultText;
 			console.log(this.defaultText);
-		},
-		/**
-		 * 保存搜索历史数据
-		 */
-		saveSearchData() {
-			// 1.如果当前的搜索内容已存在,则原有的搜索内容需要被展示到搜索历史的头部，而不是新增一条搜索内容
-			// 2.如果当前的搜索内容不存在,则新的搜索内容会被展示在搜索历史的头部
-			const index = this.searchData.findIndex((item) => item === this.searchVal);
-			if (index !== -1) {
-				this.searchData.splice(index, 1);
-			}
-			this.searchData.unshift(this.searchVal);
-		},
-		onRemoveAllSearchData() {
-			this.searchData = []
-		},
-		onRemoveSearchData(index) {
-			this.searchData.splice(index, 1)
 		}
+		// /**
+		//  * 保存搜索历史数据
+		//  */
+		// saveSearchData() {
+		// 	// 1.如果当前的搜索内容已存在,则原有的搜索内容需要被展示到搜索历史的头部，而不是新增一条搜索内容
+		// 	// 2.如果当前的搜索内容不存在,则新的搜索内容会被展示在搜索历史的头部
+		// 	const index = this.searchData.findIndex(item => item === this.searchVal);
+		// 	if (index !== -1) {
+		// 		this.searchData.splice(index, 1);
+		// 	}
+		// 	this.searchData.unshift(this.searchVal);
+		// },
+		// onRemoveAllSearchData() {
+		// 	this.searchData = [];
+		// },
+		// onRemoveSearchData(index) {
+		// 	this.searchData.splice(index, 1);
+		// }
 	}
 };
 </script>

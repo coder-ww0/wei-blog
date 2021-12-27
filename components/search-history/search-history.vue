@@ -22,30 +22,41 @@
 </template>
 
 <script>
+// 1.导入mapState 函数
+// 2.导入mapMutations函数，处理mutation的问题
+import { mapState, mapMutations } from 'vuex';
 export default {
 	name: 'search-history',
 	props: {
-		searchData: {
-			type: Array,
-			required: true
-		}
+		// searchData: {
+		// 	type: Array,
+		// 	required: true
+		// }
 	},
 	data() {
 		return {
-			isShowClear: false,
+			isShowClear: false
 			// searchData: ['sunday', 'uniapp', 'vue', '前端']
 		};
 	},
+	computed: {
+		// 2. 在computed中通过mapState函数，注册state中的数据，导入之后的数据可以直接使用（就像使用data中的数据一样）
+		// mapState(模块名称，【字段名】)
+		...mapState('search', ['searchData'])
+	},
 	methods: {
+		// 利用mutataions函数，可以直接把vuex中的mutation合并到当前的组件的method中，合并进来之后，使用mutation
+		// 就像使用method方法一样
+		...mapMutations('search', ['removeSearchData', 'removeAllSearchData']),
 		onClearAll() {
 			uni.showModal({
 				title: '提示',
 				content: '删除搜索历史记录',
 				showCancel: true,
-				success :({ confirm, cancel}) => {
+				success: ({ confirm, cancel }) => {
 					if (confirm) {
 						// 删除searchData
-						this.$emit('removeAllSearchData');
+						this.removeAllSearchData();
 						// 返回状态
 						this.isShowClear = false;
 					}
@@ -53,12 +64,12 @@ export default {
 			});
 		},
 		onHistoryItemClick(item, index) {
-			console.log('单个删除事件生效')
+			console.log('单个删除事件生效');
 			if (this.isShowClear) {
 				// 删除指定的item
-				this.$emit('removeSearchData', index)
+				this.removeSearchData(index);
 			} else {
-				this.$emit('onItemClick', item);
+				this.$emit('onSearch', item);
 			}
 		}
 	}
