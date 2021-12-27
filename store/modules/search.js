@@ -1,5 +1,6 @@
 const STORAGE_KEY = "search-list";
-
+// 最长的历史数据的缓存数量
+const HISTORY_MAX = 10;
 export default {
 	// 独立的命名空间
 	namespaced: true,
@@ -33,6 +34,11 @@ export default {
 				state.searchData.splice(index,1);
 			}
 			state.searchData.unshift(val)
+			// 最多显示10条的逻辑
+			if (state.searchData.length > HISTORY_MAX) {
+				state.searchData.splice(HISTORY_MAX, state.searchData.length - HISTORY_MAX)
+			}
+			
 			// 在vuex的模块中。通过this.commit函数条用mutation
 			// this.commit函数接受一个字符串为当前mutation的路径this.commit('模块名/mutation名')
 			this.commit('search/saveToStorage')

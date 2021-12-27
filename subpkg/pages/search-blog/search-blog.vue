@@ -21,11 +21,16 @@
 		<!-- 搜索历史 -->
 		<view class="search-history-box" v-else-if="showType === SEARCH_HISTORY"><search-history @onSearch="onSearchConfirm"></search-history></view>
 		<!-- 搜索结果 -->
-		<view class="search-result-list-box" v-else><search-result-list></search-result-list></view>
+		<view class="search-result-list-box" v-else>
+			<!-- 1.给mescroll-body的组件添加：ref="mescrollItem" mescrollItem是固定的不可变化的  -->
+			<search-result-list ref="mescrollItem" :queryStr="searchVal"></search-result-list>
+		</view>
 	</view>
 </template>
 
 <script>
+// 2. 引入mescroll-comp.js
+import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js';
 import { getDefaultText } from '@/api/search.js';
 import { mapMutations } from 'vuex';
 // 热搜列表
@@ -35,6 +40,8 @@ const SEARCH_HISTORY = '1';
 // 热搜结果
 const SEARCH_RESULT = '2';
 export default {
+	// 3. 注册 mixins
+	mixins: [MescrollCompMixin],
 	data() {
 		return {
 			// 输入框中的内容。从子组件传过来的值
