@@ -25,6 +25,11 @@ function request({ url, data, method }) {
 			},
 			fail: (error) => {
 				reject(error)
+			},
+			// 请求之后的回调
+			complete: () => {
+				// 关闭加载(前面没有显示loading使用这个也不会产生影响)
+				uni.hideLoading();
 			}
 		})
 	})

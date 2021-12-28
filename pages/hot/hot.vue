@@ -8,12 +8,8 @@
 			activeTextColor: '#ff00ff'
 			}"
 		-->
-		<view class="search-box" @click="onToSearch">
-			<my-search placeholderText="输入搜索框"></my-search>
-		</view>
-		<view class="tab-sticky">
-			<my-tabs :tabData="tabData" :defaultIndex="currentIndex" @tabClick="onTabClick()"></my-tabs>
-		</view>
+		<view class="search-box" @click="onToSearch"><my-search placeholderText="输入搜索框"></my-search></view>
+		<view class="tab-sticky"><my-tabs :tabData="tabData" :defaultIndex="currentIndex" @tabClick="onTabClick()"></my-tabs></view>
 		<!--
 			1. 使用mock数据，构建List的基本结构
 			2. 美化样式
@@ -24,25 +20,27 @@
 			6. 完成list与tabs联动的能力
 		-->
 		<!-- current 表示当前展示哪个swiperItem -->
-		<swiper 
-		@animationfinish="onSwiperEnd"
-		@change="onSwiperChange"
-		class="swiper" :current="currentIndex" :style="{height: currentSwiperHeight + 'px'}">
+		<swiper @animationfinish="onSwiperEnd" @change="onSwiperChange" class="swiper" :current="currentIndex" :style="{ height: currentSwiperHeight + 'px' }">
 			<!-- swiperItem的数量，需要由tabData进行决定 -->
 			<swiper-item class="swiper-item" v-for="(tabItem, tabIndex) in tabData" :key="tabIndex">
 				<view>
 					<!-- 加载动画 -->
 					<uni-load-more status="loading" v-if="isLoading" />
 					<block v-else>
-						<hot-list-item 
-						:class="'hot-list-item-' + tabIndex"
-						v-for="(item, index) in listData[tabIndex]" :key="index" :data="item" :ranking="index + 1"></hot-list-item>
+						<hot-list-item
+							@click="onItemClick(item)"
+							:class="'hot-list-item-' + tabIndex"
+							v-for="(item, index) in listData[tabIndex]"
+							:key="index"
+							:data="item"
+							:ranking="index + 1"
+						></hot-list-item>
 					</block>
 				</view>
 			</swiper-item>
 		</swiper>
 	</view>
-</template> 
+</template>
 
 <script>
 import { getHotTabs, getHotListFromTabType } from 'api/hot.js';
@@ -104,10 +102,10 @@ export default {
 				// this.$nextTick()存在一定的兼容性问题
 				setTimeout(async () => {
 					// 获取到当前的swiper的高
-					this.currentSwiperHeight = await this.getCurrentSwiperHeight()
+					this.currentSwiperHeight = await this.getCurrentSwiperHeight();
 					// 放入缓存
-					this.swiperHeightData[this.currentIndex] = this.currentSwiperHeight
-				}, 0)
+					this.swiperHeightData[this.currentIndex] = this.currentSwiperHeight;
+				}, 0);
 			}
 			// else {
 			// 	// 有数据的情况
@@ -143,15 +141,15 @@ export default {
 				// 拿到所有的 item -> 异步
 				const query = uni.createSelectorQuery().in(this);
 				query
-				.selectAll(`.hot-list-item-${this.currentIndex}`)
-				.boundingClientRect((res) => {
-					res.forEach((item) => {
-						sum += item.height;
+					.selectAll(`.hot-list-item-${this.currentIndex}`)
+					.boundingClientRect(res => {
+						res.forEach(item => {
+							sum += item.height;
+						});
+						resolve(sum);
 					})
-					resolve(sum);
-				}).exec();
-				
-			})
+					.exec();
+			});
 		},
 		onSwiperChange(e) {
 			this.currentIndex = e.detail.current;
@@ -159,17 +157,27 @@ export default {
 			if (this.currentPageScrollTop > 130) {
 				uni.pageScrollTo({
 					scrollTop: 130
-				})
+				});
 			}
 		},
 		/**
 		 * 跳转到search-blog
 		 */
 		onToSearch() {
-			console.log('点击事件')
+			console.log('点击事件');
 			uni.navigateTo({
 				url: '/subpkg/pages/search-blog/search-blog'
-			})
+			});
+		},
+		/**
+		 * 热搜列表item的点击事件
+		 */
+		onItemClick(item) {
+			console.log('item点击事件');
+			// 页面跳转传参数
+			uni.navigateTo({
+				url: `/subpkg/pages/blog_detail/blog_detail?author=${item.user_name}&articleId=${item.id}`
+			});
 		}
 	}
 };
@@ -188,7 +196,7 @@ export default {
 		padding: 0 16px;
 		margin-bottom: $uni-spacing-col-base;
 	}
-	
+
 	.tab-sticky {
 		position: sticky;
 		top: 0;

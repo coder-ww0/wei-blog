@@ -31,38 +31,42 @@
 		}
 	},
 	"tabBar": {
-		"selectedColor":"#f94d2a",
+		"selectedColor": "#f94d2a",
 		"list": [{
-			"pagePath": "pages/hot/hot",
-			"text": "热搜",
-			"iconPath": "static/tab-icons/hot.png",
-			"selectedIconPath": "static/tab-icons/hot-active.png"
-		},
-		{
-			"pagePath": "pages/hot/hot",
-			"text": "热播",
-			"iconPath": "static/tab-icons/hot-video.png",
-			"selectedIconPath": "static/tab-icons/hot-video-active.png"
-		},
-		{
-			"pagePath": "pages/my/my",
-			"text": "我的",
-			"iconPath": "static/tab-icons/my.png",
-			"selectedIconPath": "static/tab-icons/my-active.png"
-		}]
+				"pagePath": "pages/hot/hot",
+				"text": "热搜",
+				"iconPath": "static/tab-icons/hot.png",
+				"selectedIconPath": "static/tab-icons/hot-active.png"
+			},
+			{
+				"pagePath": "pages/hot/hot",
+				"text": "热播",
+				"iconPath": "static/tab-icons/hot-video.png",
+				"selectedIconPath": "static/tab-icons/hot-video-active.png"
+			},
+			{
+				"pagePath": "pages/my/my",
+				"text": "我的",
+				"iconPath": "static/tab-icons/my.png",
+				"selectedIconPath": "static/tab-icons/my-active.png"
+			}
+		]
 	},
-	"subPackages": [
-		{
-			"root":"subpkg",
-			"name": "sub-1",
-			"pages": [
-				{
-					"path":"pages/search-blog/search-blog",
-					"style": {
-						"navigationBarTitleText":"文章搜索"
-					}
-				}
-            ]
-		}
-	]
+	"subPackages": [{
+		"root": "subpkg",
+		"name": "sub-1",
+		"pages": [{
+			"path": "pages/search-blog/search-blog",
+			"style": {
+				"navigationBarTitleText": "文章搜索"
+			}
+		}, {
+			"path": "pages/blog_detail/blog_detail",
+			"style": {
+				"navigationBarTitleText": "文章详情",
+				"enablePullDownRefresh": false
+			}
+
+		}]
+	}]
 }

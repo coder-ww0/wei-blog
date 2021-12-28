@@ -7,7 +7,7 @@
 		<mescroll-body v-else ref="mescrollRef" @init="mescrollInit" @down="downCallback" @up="upCallback">
 			<!-- 循环渲染列表数据 -->
 			<block v-for="(item, index) in resultList" :key="index">
-				<view class="search-result-item-box">
+				<view class="search-result-item-box" @click="onItemClick(item)">
 					<!-- 内容区 - 样式 1 -->
 					<search-result-item-theme1 v-if="!item.pic_list || item.pic_list.length === 0" :data="item" />
 
@@ -113,6 +113,14 @@ export default {
 			this.page += 1;
 			await this.loadSearchResult();
 			this.mescroll.endSuccess();
+		},
+		/**
+		 * 搜索结果列表的点击事件
+		 */
+		onItemClick(item) {
+			uni.navigateTo({
+				url: `/subpkg/pages/blog_detail/blog_detail?author=${item.author}&articleId=${item.id}`
+			});
 		}
 	}
 };
