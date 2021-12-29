@@ -1,6 +1,6 @@
 <template>
 	<page-meta root-font-size="52px">
-		<view class="detail-container" >
+		<view class="detail-container">
 			<!-- 文章内容区域 -->
 			<block v-if="articleData">
 				<!-- 标题 -->
@@ -27,12 +27,17 @@
 				<!-- <rich-text :nodes="articleData.content"></rich-text> -->
 				<!-- 必须为 mp-html 增加 markdown_views 的类名 -->
 				<mp-html class="markdown_views" :content="addClassFromHTML(articleData.content)" scroll-table />
+				<!-- 评论列表 -->
+				<!-- <view class="comment-box"> -->
+				<article-comment-list v-bind:articleId="articleId" ref="mescrollItem"></article-comment-list>
+				<!-- </view> -->
 			</block>
 		</view>
 	</page-meta>
 </template>
 
 <script>
+import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js';
 // 导入组件
 import mpHtml from '@/uni_modules/mp-html/components/mp-html/mp-html';
 import { getArticleDetail } from '@/api/article.js';
@@ -41,6 +46,7 @@ export default {
 	components: {
 		mpHtml
 	},
+	mixins: [MescrollCompMixin],
 	data() {
 		return {
 			// 作者名(传参数必须)
@@ -75,12 +81,15 @@ export default {
 				articleId: this.articleId
 			});
 			this.articleData = res.data;
-			console.log(this.articleData);
+			// console.log(this.articleData);
 		},
 		/**
 		 * 为所有的 DOM 增加类名
 		 */
 		addClassFromHTML(info) {
+			if (!info) {
+				return;
+			}
 			return info
 				.replace(/<p>/gi, '<p class="p-cls">')
 				.replace(/<a>/gi, '<a class="a-cls">')
@@ -118,6 +127,7 @@ export default {
 @import '~@/styles/article-detail.scss';
 .detail-container {
 	padding: $uni-spacing-col-base $uni-spacing-row-base;
+	padding-bottom: 68px;
 	.title {
 		font-size: $uni-font-size-title;
 		color: $uni-text-color-title;
