@@ -20,7 +20,7 @@
 					</view>
 					<view class="detail-right">
 						<!-- 关注按钮 -->
-						<button class="follow" size="mini">关注</button>
+						<button class="follow" size="mini" @click="onFollowClick">关注</button>
 					</view>
 				</view>
 				<!-- 文章内容 -->
@@ -32,6 +32,8 @@
 				<article-comment-list v-bind:articleId="articleId" ref="mescrollItem"></article-comment-list>
 				<!-- </view> -->
 			</block>
+			<!-- 底部功能区 -->
+			<article-operate></article-operate>
 		</view>
 	</page-meta>
 </template>
@@ -41,6 +43,8 @@ import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-un
 // 导入组件
 import mpHtml from '@/uni_modules/mp-html/components/mp-html/mp-html';
 import { getArticleDetail } from '@/api/article.js';
+import { mapActions } from 'vuex';
+
 export default {
 	// 注册组件
 	components: {
@@ -69,6 +73,7 @@ export default {
 		this.loadArticleDetail();
 	},
 	methods: {
+		...mapActions('user', ['isLogin']),
 		/**
 		 * 获取文章详情数据
 		 */
@@ -118,6 +123,16 @@ export default {
 				.replace(/<summary>/gi, '<summary class="summary-cls">')
 				.replace(/<blockquote>/gi, '<blockquote class="blockquote-cls">')
 				.replace(/<img/gi, '<img class="img-cls"');
+		},
+		/**
+		 * 关注按钮的点击事件
+		 */
+		async onFollowClick() {
+			const isLogin = await this.isLogin();
+			// 如果没有登录则不能进行下一步的操作(关注)
+			if (!isLogin) {
+				return;
+			}
 		}
 	}
 };

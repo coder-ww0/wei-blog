@@ -20,14 +20,22 @@
 			@cancel="onCancel"
 			@input="onInput"
 		>
-		 <view slot="clearIcon" style="color: #999999" >X</view>
-			 <!-- <uni-icons slot="clearIcon" type="clear" color="#999999" /> -->
+			<view slot="clearIcon" style="color: #999999">X</view>
+			<!-- <uni-icons slot="clearIcon" type="clear" color="#999999" /> -->
 		</uni-search-bar>
 		<!-- 搜索按钮 -->
-		<view class="my-search-box" v-else>
-			<image class="icon" src="@/static/images/search.png" />
+		<view
+			class="my-search-box"
+			v-else
+			:style="{
+				height: config.height + 'px',
+				backgroundColor: config.backgroundColor,
+				border: config.border
+			}"
+		>
+			<image class="icon" :src="config.icon" />
 			<!-- placeholder -->
-			<text class="placeholder">{{ placeholderText }}</text>
+			<text class="placeholder" :style="{color:config.textColor}">{{ placeholderText }}</text>
 		</view>
 	</view>
 </template>
@@ -53,7 +61,7 @@ export default {
 			default: () => ({
 				height: 36,
 				backgroundColor: '#ffffff',
-				icon: '/static/images/search-png',
+				icon: '/static/images/search.png',
 				textColor: '#454545',
 				border: '1px solid #c9c9c9'
 			})
@@ -69,8 +77,8 @@ export default {
 		 * 点击搜索按钮触发
 		 */
 		onSearch() {
-			console.log('onSearch')
-			console.log(this.value)
+			console.log('onSearch');
+			console.log(this.value);
 			this.$emit('search', this.value);
 		},
 		/**

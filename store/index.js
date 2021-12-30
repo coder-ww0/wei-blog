@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 
 // 导入search.js
 import search from './modules/search.js'
-
+import user from './modules/user.js'
 // 2. 安装vuex插件
 Vue.use(Vuex);
 
@@ -12,7 +12,8 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 	// 模块
 	modules: {
-		search
+		search,
+		user
 	}
 })
 
