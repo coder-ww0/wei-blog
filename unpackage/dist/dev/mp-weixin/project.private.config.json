@@ -23,6 +23,12 @@
                     "pathName": "subpkg/pages/blog_detail/blog_detail",
                     "query": "author=hebtu666&articleId=115721080",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/hot-video/hot-video",
+                    "query": "",
+                    "scene": null
                 }
             ]
         }

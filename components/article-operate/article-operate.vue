@@ -3,7 +3,7 @@
 		<!-- 输入框（首页的输入框） -->
 		<view class="comment-box" @click="onCommentClick">
 			<my-search
-				placeholderText="评论一句,前排大call...."
+				:placeholderText="placeholder"
 				:config="{
 					height: 28,
 					backgroundColor: '#eeedf4',
@@ -34,6 +34,10 @@ export default {
 		articleData: {
 			type: Object,
 			// required: true
+		},
+	    placeholder: {
+			type: String,
+			default: '评论一句，前排大call...'
 		}
 	},
 	data() {

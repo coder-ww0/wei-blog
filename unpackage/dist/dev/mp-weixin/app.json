@@ -10,7 +10,8 @@
       "pages": [
         "pages/search-blog/search-blog",
         "pages/blog_detail/blog_detail",
-        "pages/login-page/login-page"
+        "pages/login-page/login-page",
+        "pages/video-detail/video-detail"
       ],
       "name": "sub-1"
     }
@@ -31,7 +32,7 @@
         "selectedIconPath": "static/tab-icons/hot-active.png"
       },
       {
-        "pagePath": "pages/hot/hot",
+        "pagePath": "pages/hot-video/hot-video",
         "text": "热播",
         "iconPath": "static/tab-icons/hot-video.png",
         "selectedIconPath": "static/tab-icons/hot-video-active.png"
