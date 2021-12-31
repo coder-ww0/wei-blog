@@ -1,4 +1,6 @@
 const BASE_URL = 'https://api.imooc-blog.lgdsunday.club/api';
+// 从vuex中拿取对应的token
+import store from '@/store';
 
 
 function request({ url, data, method }) {
@@ -7,6 +9,9 @@ function request({ url, data, method }) {
 			url: BASE_URL + url,
 			data,
 			method,
+			header: {
+				Authorization: store.state.user.token
+			},
 			success: ( {data} ) => {
 				if (data.success) {
 					// 请求成功

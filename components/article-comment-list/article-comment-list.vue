@@ -120,19 +120,32 @@ export default {
 				this.mescroll = this.$refs.mescrollRef.mescroll;
 			}
 			return this.mescroll;
+		},
+		/**
+		 * 为commentList 增加一个评论
+		 */
+		addCommentList(data) {
+			this.commentList.unshift(data);
 		}
-	},
-	watch: {
-		articleId: {
-			handler(val) {
-				if (val) {
-					this.loadCommentList();
-				}
-				console.log(this.articleId);
-				immediate: true;
-			}
-		}
+	}, 
+	created() {
+		this.loadCommentList();
 	}
+	// watch: {
+	// 	articleId: {
+	// 		handler(val) {
+	// 			console.log('val', val)
+	// 			if (val) {
+	// 				console.log('watch起作用')
+	// 				console.log(this.articleId);
+	// 				this.loadCommentList();
+	// 			}
+				
+
+	// 			immediate: true;
+	// 		}
+	// 	}
+	// }
 };
 </script>
 

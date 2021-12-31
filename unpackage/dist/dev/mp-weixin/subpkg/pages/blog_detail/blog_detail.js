@@ -103,6 +103,12 @@ try {
     },
     articleOperate: function() {
       return __webpack_require__.e(/*! import() | components/article-operate/article-operate */ "components/article-operate/article-operate").then(__webpack_require__.bind(null, /*! @/components/article-operate/article-operate.vue */ 148))
+    },
+    uniPopup: function() {
+      return __webpack_require__.e(/*! import() | uni_modules/uni-popup/components/uni-popup/uni-popup */ "uni_modules/uni-popup/components/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @/uni_modules/uni-popup/components/uni-popup/uni-popup.vue */ 155))
+    },
+    articleCommentCommit: function() {
+      return __webpack_require__.e(/*! import() | components/article-comment-commit/article-comment-commit */ "components/article-comment-commit/article-comment-commit").then(__webpack_require__.bind(null, /*! @/components/article-comment-commit/article-comment-commit.vue */ 162))
     }
   }
 } catch (e) {
@@ -211,11 +217,29 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 var _mescrollComp = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/mescroll-uni/components/mescroll-uni/mixins/mescroll-comp.js */ 53));
 
 
 var _article = __webpack_require__(/*! @/api/article.js */ 63);
-var _vuex = __webpack_require__(/*! vuex */ 18);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mpHtml = function mpHtml() {Promise.all(/*! require.ensure | uni_modules/mp-html/components/mp-html/mp-html */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/mp-html/components/mp-html/mp-html")]).then((function () {return resolve(__webpack_require__(/*! @/uni_modules/mp-html/components/mp-html/mp-html */ 133));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 18);
+var _user = __webpack_require__(/*! @/api/user.js */ 24);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var mpHtml = function mpHtml() {Promise.all(/*! require.ensure | uni_modules/mp-html/components/mp-html/mp-html */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/mp-html/components/mp-html/mp-html")]).then((function () {return resolve(__webpack_require__(/*! @/uni_modules/mp-html/components/mp-html/mp-html */ 133));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 {
   // 注册组件
@@ -230,7 +254,13 @@ var _vuex = __webpack_require__(/*! vuex */ 18);function _interopRequireDefault(
       // 文章id(传参必须)
       articleId: '',
       // 文章详情数据
-      articleData: [] };
+      articleData: null,
+      // 关注用户的loading(点击关注时出现的loading图标)
+      isFollowLoading: false,
+      // popup的显示状态
+      isShowCommit: false,
+      // 解决定时器追加的问题
+      timer: '' };
 
   },
   /**
@@ -299,12 +329,65 @@ var _vuex = __webpack_require__(/*! vuex */ 18);function _interopRequireDefault(
     /**
         * 关注按钮的点击事件
         */
-    onFollowClick: function onFollowClick() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var isLogin;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
+    onFollowClick: function onFollowClick() {var _this2 = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var isLogin, _yield$userFollow, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:_context2.next = 2;return (
                   _this2.isLogin());case 2:isLogin = _context2.sent;if (
 
-                isLogin) {_context2.next = 5;break;}return _context2.abrupt("return");case 5:case "end":return _context2.stop();}}}, _callee2);}))();
+                isLogin) {_context2.next = 5;break;}return _context2.abrupt("return");case 5:
 
 
+                // 是否关注用户接口
+                _this2.isFollowLoading = true;_context2.next = 8;return (
+                  (0, _user.userFollow)({
+                    author: _this2.author,
+                    isFollow: !_this2.articleData.isFollow }));case 8:_yield$userFollow = _context2.sent;res = _yield$userFollow.data;
+
+                // 修改用户数据（有些场景下修改了对应的页面，请求了对应的接口，需要重新进行页面的刷新）
+                _this2.articleData.isFollow = !_this2.articleData.isFollow;
+                _this2.isFollowLoading = false;case 12:case "end":return _context2.stop();}}}, _callee2);}))();
+    },
+    /**
+        * 点击发表评论，子组件传来的事件
+        */
+    onComment: function onComment() {
+      // 通过调用popup实例的方法，进行弹出层的弹出
+      this.$refs.popup.open();
+    },
+    /**
+        * 发表评论的切换事件
+        */
+    onCommitPopupChange: function onCommitPopupChange(e) {var _this3 = this;
+      // 修改对应的标记，当popup关闭时，为了动画平顺，进行延迟处理
+      if (e.show) {
+        this.isShowCommit = e.show;
+      } else {
+        console.log(this.timer);
+        this.timer = setTimeout(function () {
+          _this3.isShowCommit = e.show;
+        }, 2000);
+        // 定时器需要进行清楚，或者重复点击容易出现bug
+        clearTimeout(this.timer);
+      }
+    },
+    /**
+        * 评论发表成功，需要关闭popup弹出层
+        */
+    onSendSuccess: function onSendSuccess(data) {
+      this.$refs.popup.close();
+      this.isShowCommit = false;
+      // 为commentList增加数据 (this.$refs.mescrollItem为组件实例)
+      this.$refs.mescrollItem.addCommentList(data);
+    },
+    /**
+        * 点赞处理的回调
+        */
+    onChangePraise: function onChangePraise(isPraise) {
+      this.articleData.isPraise = isPraise;
+    },
+    /**
+        * 收藏处理回调
+        */
+    onChangeCollect: function onChangeCollect(isCollect) {
+      this.articleData.isCollect = isCollect;
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

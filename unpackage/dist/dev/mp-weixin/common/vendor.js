@@ -941,7 +941,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -3607,57 +3607,6 @@ module.exports = Parser;
 
 /***/ }),
 
-/***/ 160:
-/*!****************************************************************************************************!*\
-  !*** E:/wechatproject/wei-blog/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
-  \****************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 161));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 162));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 163));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
-{
-  en: _en.default,
-  'zh-Hans': _zhHans.default,
-  'zh-Hant': _zhHant.default };exports.default = _default;
-
-/***/ }),
-
-/***/ 161:
-/*!***************************************************************************************************!*\
-  !*** E:/wechatproject/wei-blog/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
-  \***************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
-
-/***/ }),
-
-/***/ 162:
-/*!********************************************************************************************************!*\
-  !*** E:/wechatproject/wei-blog/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
-  \********************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
-
-/***/ }),
-
-/***/ 163:
-/*!********************************************************************************************************!*\
-  !*** E:/wechatproject/wei-blog/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
-  \********************************************************************************************************/
-/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
-
-/***/ }),
-
 /***/ 17:
 /*!************************************************!*\
   !*** E:/wechatproject/wei-blog/store/index.js ***!
@@ -3690,83 +3639,54 @@ store;exports.default = _default;
 
 /***/ }),
 
-/***/ 171:
-/*!***************************************************************************!*\
-  !*** E:/wechatproject/wei-blog/static/images sync ^\.\/ranking\-.*\.png$ ***!
-  \***************************************************************************/
+/***/ 174:
+/*!****************************************************************************************************!*\
+  !*** E:/wechatproject/wei-blog/uni_modules/uni-search-bar/components/uni-search-bar/i18n/index.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var map = {
-	"./ranking-1.png": 172,
-	"./ranking-2.png": 173,
-	"./ranking-3.png": 174,
-	"./ranking-other.png": 175
-};
-
-
-function webpackContext(req) {
-	var id = webpackContextResolve(req);
-	return __webpack_require__(id);
-}
-function webpackContextResolve(req) {
-	if(!__webpack_require__.o(map, req)) {
-		var e = new Error("Cannot find module '" + req + "'");
-		e.code = 'MODULE_NOT_FOUND';
-		throw e;
-	}
-	return map[req];
-}
-webpackContext.keys = function webpackContextKeys() {
-	return Object.keys(map);
-};
-webpackContext.resolve = webpackContextResolve;
-module.exports = webpackContext;
-webpackContext.id = 171;
-
-/***/ }),
-
-/***/ 172:
-/*!*************************************************************!*\
-  !*** E:/wechatproject/wei-blog/static/images/ranking-1.png ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAwUlEQVQ4T2NkoBJgBJnzMyiugek/oz2pZv5j/H+Qfd2iBpA+sEH/QxO1/vz5N5WBkcGBaMP+MxxgYWHKZlw9/xrcIBDjd2D8flINYl2/0BFmMdhFowahxsN/hgOjYUQgaY6GESiAnv5n+N/J+I/pMgMjgxcD4/9SlFAjJowYGRhn/v79t5Nz8+L78LwYFG/H8J+hgoGRwRMshtOgoIQdDAz/uRn//+9kWb9oC644+xUUl8XEwFjOwMCwg2XdwnSYOgCbsYQTv+rcCgAAAABJRU5ErkJggg=="
-
-/***/ }),
-
-/***/ 173:
-/*!*************************************************************!*\
-  !*** E:/wechatproject/wei-blog/static/images/ranking-2.png ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAwElEQVQ4T+2SPQrCcAzFX/wWb+Id2uqoxxBqQWfRsWsP4FAVT+HgprbeQHB18hC29P+klQoKxRYcmymE5JfwXgR/Cok5D1e3pUKjKJNKTk3Ls+O5BMSt1g0jLAHp5YfxWK9iKiP/+gbFSbDWDkVBDdPvp4uTi0rQlw88lhr9es1SIwJ3kg6FlxqqQ4KzT9XyaES4kcBpm94tHQ43uq4UFiIYvGoZoHCt7ynsKEWnNT7vsjwLVsYEwjmAfcP0rLTvCeyKihMbFdy9AAAAAElFTkSuQmCC"
-
-/***/ }),
-
-/***/ 174:
-/*!*************************************************************!*\
-  !*** E:/wechatproject/wei-blog/static/images/ranking-3.png ***!
-  \*************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAwklEQVQ4T2NkoBJgBJkTM/13AyMzoz2pZv7/+//gkkzWBpA+sEHRM/5rMTH9ncrwn8GBaMMYGQ78+8ecvTSD8RrcIBAjdtaf/aQatDiNxRFmMdhFowahxgMjw4HRMCKQNEfDCBRATxn//+v895/xMgMTkxcjw/9SlFAjJoz+MzDMZGT63bk4lfM+THP8jP92fxn/VjAyMHiCxXAaNOPPDgZGBm5GRobORWksW3DFWdyMv1n/GRnKGRj+71iczpIOUwcApDKEE0Zu4qcAAAAASUVORK5CYII="
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 175));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 176));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 177));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+{
+  en: _en.default,
+  'zh-Hans': _zhHans.default,
+  'zh-Hant': _zhHant.default };exports.default = _default;
 
 /***/ }),
 
 /***/ 175:
-/*!*****************************************************************!*\
-  !*** E:/wechatproject/wei-blog/static/images/ranking-other.png ***!
-  \*****************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*!***************************************************************************************************!*\
+  !*** E:/wechatproject/wei-blog/uni_modules/uni-search-bar/components/uni-search-bar/i18n/en.json ***!
+  \***************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
 
-module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAuElEQVQ4T2NkoBJgBJnz/PnzBkZGRntSzfz///9BSUnJBpA+sEFv377V+v3791QGBgYHEgw7wMrKmi0sLHwNbhCI8eLFi/2kGiQhIeEIsxjsolGD0OPhwGgYEUyao2HEwPCUgYGh8////5eZmJi8/v//X4oWakSF0UyQIRISEvdhml+9emX39+/fCkZGRk+oGHaDXr58uYOBgYH7////IAO24Iqz58+fZzEyMpYzMDDskJCQSIepAwCLWHYTWKTTjwAAAABJRU5ErkJggg=="
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"Search enter content\"}");
+
+/***/ }),
+
+/***/ 176:
+/*!********************************************************************************************************!*\
+  !*** E:/wechatproject/wei-blog/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hans.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"请输入搜索内容\"}");
+
+/***/ }),
+
+/***/ 177:
+/*!********************************************************************************************************!*\
+  !*** E:/wechatproject/wei-blog/uni_modules/uni-search-bar/components/uni-search-bar/i18n/zh-Hant.json ***!
+  \********************************************************************************************************/
+/*! exports provided: uni-search-bar.cancel, uni-search-bar.placeholder, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"uni-search-bar.cancel\":\"cancel\",\"uni-search-bar.placeholder\":\"請輸入搜索內容\"}");
 
 /***/ }),
 
@@ -5027,7 +4947,158 @@ module.exports = index_cjs;
 
 /***/ }),
 
-/***/ 183:
+/***/ 185:
+/*!***************************************************************************!*\
+  !*** E:/wechatproject/wei-blog/static/images sync ^\.\/ranking\-.*\.png$ ***!
+  \***************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./ranking-1.png": 186,
+	"./ranking-2.png": 187,
+	"./ranking-3.png": 188,
+	"./ranking-other.png": 189
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 185;
+
+/***/ }),
+
+/***/ 186:
+/*!*************************************************************!*\
+  !*** E:/wechatproject/wei-blog/static/images/ranking-1.png ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAwUlEQVQ4T2NkoBJgBJnzMyiugek/oz2pZv5j/H+Qfd2iBpA+sEH/QxO1/vz5N5WBkcGBaMP+MxxgYWHKZlw9/xrcIBDjd2D8flINYl2/0BFmMdhFowahxsN/hgOjYUQgaY6GESiAnv5n+N/J+I/pMgMjgxcD4/9SlFAjJowYGRhn/v79t5Nz8+L78LwYFG/H8J+hgoGRwRMshtOgoIQdDAz/uRn//+9kWb9oC644+xUUl8XEwFjOwMCwg2XdwnSYOgCbsYQTv+rcCgAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ 187:
+/*!*************************************************************!*\
+  !*** E:/wechatproject/wei-blog/static/images/ranking-2.png ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAwElEQVQ4T+2SPQrCcAzFX/wWb+Id2uqoxxBqQWfRsWsP4FAVT+HgprbeQHB18hC29P+klQoKxRYcmymE5JfwXgR/Cok5D1e3pUKjKJNKTk3Ls+O5BMSt1g0jLAHp5YfxWK9iKiP/+gbFSbDWDkVBDdPvp4uTi0rQlw88lhr9es1SIwJ3kg6FlxqqQ4KzT9XyaES4kcBpm94tHQ43uq4UFiIYvGoZoHCt7ynsKEWnNT7vsjwLVsYEwjmAfcP0rLTvCeyKihMbFdy9AAAAAElFTkSuQmCC"
+
+/***/ }),
+
+/***/ 188:
+/*!*************************************************************!*\
+  !*** E:/wechatproject/wei-blog/static/images/ranking-3.png ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAwklEQVQ4T2NkoBJgBJkTM/13AyMzoz2pZv7/+//gkkzWBpA+sEHRM/5rMTH9ncrwn8GBaMMYGQ78+8ecvTSD8RrcIBAjdtaf/aQatDiNxRFmMdhFowahxgMjw4HRMCKQNEfDCBRATxn//+v895/xMgMTkxcjw/9SlFAjJoz+MzDMZGT63bk4lfM+THP8jP92fxn/VjAyMHiCxXAaNOPPDgZGBm5GRobORWksW3DFWdyMv1n/GRnKGRj+71iczpIOUwcApDKEE0Zu4qcAAAAASUVORK5CYII="
+
+/***/ }),
+
+/***/ 189:
+/*!*****************************************************************!*\
+  !*** E:/wechatproject/wei-blog/static/images/ranking-other.png ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAuElEQVQ4T2NkoBJgBJnz/PnzBkZGRntSzfz///9BSUnJBpA+sEFv377V+v3791QGBgYHEgw7wMrKmi0sLHwNbhCI8eLFi/2kGiQhIeEIsxjsolGD0OPhwGgYEUyao2HEwPCUgYGh8////5eZmJi8/v//X4oWakSF0UyQIRISEvdhml+9emX39+/fCkZGRk+oGHaDXr58uYOBgYH7////IAO24Iqz58+fZzEyMpYzMDDskJCQSIepAwCLWHYTWKTTjwAAAABJRU5ErkJggg=="
+
+/***/ }),
+
+/***/ 19:
+/*!*********************************************************!*\
+  !*** E:/wechatproject/wei-blog/store/modules/search.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var STORAGE_KEY = "search-list";
+// 最长的历史数据的缓存数量
+var HISTORY_MAX = 10;var _default =
+{
+  // 独立的命名空间
+  namespaced: true,
+  // 通过state声明数据
+  state: function state() {
+    return {
+      // 搜索历史的数据 
+      searchData: uni.getStorageSync(STORAGE_KEY) || [] };
+
+  },
+  // 更改state中数据的唯一方式是：提交一个mutations
+  mutations: {
+    /**
+                * 把数据保存到本地
+                */
+    saveToStorage: function saveToStorage(state) {
+      uni.setStorage({
+        key: STORAGE_KEY,
+        data: state.searchData });
+
+    },
+    /**
+        * 添加数据
+        */
+    addSearchData: function addSearchData(state, val) {
+      if (!val) {
+        return;
+      }
+      var index = state.searchData.findIndex(function (item) {return item === val;});
+      if (index !== -1) {
+        state.searchData.splice(index, 1);
+      }
+      state.searchData.unshift(val);
+      // 最多显示10条的逻辑
+      if (state.searchData.length > HISTORY_MAX) {
+        state.searchData.splice(HISTORY_MAX, state.searchData.length - HISTORY_MAX);
+      }
+
+      // 在vuex的模块中。通过this.commit函数条用mutation
+      // this.commit函数接受一个字符串为当前mutation的路径this.commit('模块名/mutation名')
+      this.commit('search/saveToStorage');
+    },
+    /**
+        * 删除指定数据
+        */
+    removeSearchData: function removeSearchData(state, index) {
+      state.searchData.splice(index, 1);
+      this.commit('search/saveToStorage');
+    },
+    /**
+        * 修改数据
+        */
+    removeAllSearchData: function removeAllSearchData(state) {
+      state.searchData = [];
+      this.commit('search/saveToStorage');
+    } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 197:
 /*!*************************************************************************************!*\
   !*** E:/wechatproject/wei-blog/uni_modules/uni-icons/components/uni-icons/icons.js ***!
   \*************************************************************************************/
@@ -6150,78 +6221,170 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 19:
-/*!*********************************************************!*\
-  !*** E:/wechatproject/wei-blog/store/modules/search.js ***!
-  \*********************************************************/
+/***/ 2:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 20:
+/*!*******************************************************!*\
+  !*** E:/wechatproject/wei-blog/store/modules/user.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var STORAGE_KEY = "search-list";
-// 最长的历史数据的缓存数量
-var HISTORY_MAX = 10;var _default =
-{
-  // 独立的命名空间
-  namespaced: true,
-  // 通过state声明数据
-  state: function state() {
-    return {
-      // 搜索历史的数据 
-      searchData: uni.getStorageSync(STORAGE_KEY) || [] };
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 21));var _user = __webpack_require__(/*! @/api/user.js */ 24);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
+var TOKEN_KEY = 'token';
+var USER_INFO_KEY = 'user-info';var _default =
 
-  },
-  // 更改state中数据的唯一方式是：提交一个mutations
+{
+  namespaced: true,
+  state: function state() {return {
+      // 用户token(同步)
+      token: uni.getStorageSync(TOKEN_KEY) || '',
+      // 用户信息(同步)
+      userInfo: uni.getStorageSync(USER_INFO_KEY) || {} };},
+
   mutations: {
     /**
-                * 把数据保存到本地
+                * 保存token
                 */
-    saveToStorage: function saveToStorage(state) {
+    setToken: function setToken(state, token) {
+      state.token = token;
+      this.commit('user/saveToToken');
+    },
+    /**
+        * 保存userInfo
+        */
+    setUserInfo: function setUserInfo(state, userInfo) {
+      state.userInfo = userInfo;
+      this.commit('user/saveToUserInfo');
+    },
+    /**
+        * 保存token到本地
+        */
+    saveToToken: function saveToToken(state) {
       uni.setStorage({
-        key: STORAGE_KEY,
-        data: state.searchData });
+        key: TOKEN_KEY,
+        data: state.token });
 
     },
     /**
-        * 添加数据
+        * 保存userInfo到本地存储
         */
-    addSearchData: function addSearchData(state, val) {
-      if (!val) {
-        return;
-      }
-      var index = state.searchData.findIndex(function (item) {return item === val;});
-      if (index !== -1) {
-        state.searchData.splice(index, 1);
-      }
-      state.searchData.unshift(val);
-      // 最多显示10条的逻辑
-      if (state.searchData.length > HISTORY_MAX) {
-        state.searchData.splice(HISTORY_MAX, state.searchData.length - HISTORY_MAX);
-      }
+    saveToUserInfo: function saveToUserInfo(state) {
+      uni.setStorage({
+        key: USER_INFO_KEY,
+        data: state.userInfo });
 
-      // 在vuex的模块中。通过this.commit函数条用mutation
-      // this.commit函数接受一个字符串为当前mutation的路径this.commit('模块名/mutation名')
-      this.commit('search/saveToStorage');
     },
     /**
-        * 删除指定数据
+        * 删除token
         */
-    removeSearchData: function removeSearchData(state, index) {
-      state.searchData.splice(index, 1);
-      this.commit('search/saveToStorage');
+    removeToken: function removeToken(state) {
+      state.token = '';
+      this.commit('user/saveToToken');
     },
     /**
-        * 修改数据
+        * 删除用户信息
         */
-    removeAllSearchData: function removeAllSearchData(state) {
-      state.searchData = [];
-      this.commit('search/saveToStorage');
+    removeUserInfo: function removeUserInfo(state) {
+      state.userInfo = {};
+      this.commit('user/saveToUserInfo');
+    } },
+
+  // actions中完成异步操作
+  actions: {
+    /**
+              * 完成登录 context vuex的实例
+              */
+    login: function login(context, userProfile) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo, _yield$_login, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                userInfo = userProfile.userInfo;
+                // 调用登录接口，网站的登录，非微信的
+                _context.next = 3;return (0, _user.login)({
+                  signature: userProfile.signature,
+                  iv: userProfile.iv,
+                  nickName: userInfo.nickName,
+                  gender: userInfo.gender,
+                  city: userInfo.city,
+                  province: userInfo.province,
+                  avatarUrl: userInfo.avatarUrl });case 3:_yield$_login = _context.sent;res = _yield$_login.data;
+
+                // 登录逻辑
+                _this.commit('user/setToken', res.token);
+                _this.commit('user/setUserInfo', userInfo);case 7:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    /**
+        * 退出登录
+        */
+    logout: function logout(context) {
+      this.commit('user/removeToken');
+      this.commit('user/removeUserInfo');
+    },
+    /**
+        * 进行登录的判定
+        */
+    isLogin: function isLogin(context) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$uni$showModal, _yield$uni$showModal2, error, res, cancel, confirm;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (!
+                context.state.token) {_context2.next = 2;break;}return _context2.abrupt("return",
+                true);case 2:_context2.next = 4;return (
+
+
+                  uni.showModal({
+                    title: '登录之后才可以进行后续操作',
+                    content: '立即跳转到登录页面？(登录后自动返回当前页面)' }));case 4:_yield$uni$showModal = _context2.sent;_yield$uni$showModal2 = _slicedToArray(_yield$uni$showModal, 2);error = _yield$uni$showModal2[0];res = _yield$uni$showModal2[1];
+
+                // 对象的解构赋值
+                cancel = res.cancel, confirm = res.confirm;
+                if (confirm) {
+                  uni.navigateTo({
+                    url: '/subpkg/pages/login-page/login-page' });
+
+                }return _context2.abrupt("return",
+                false);case 11:case "end":return _context2.stop();}}}, _callee2);}))();
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 
-/***/ 198:
+/***/ 21:
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ 22);
+
+/***/ }),
+
+/***/ 212:
 /*!**************************************************************************************************!*\
   !*** E:/wechatproject/wei-blog/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni.js ***!
   \**************************************************************************************************/
@@ -7032,7 +7195,7 @@ MeScroll.prototype.preventDefault = function (e) {
 
 /***/ }),
 
-/***/ 199:
+/***/ 213:
 /*!*********************************************************************************************************!*\
   !*** E:/wechatproject/wei-blog/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-uni-option.js ***!
   \*********************************************************************************************************/
@@ -7107,159 +7270,7 @@ GlobalOption;exports.default = _default;
 
 /***/ }),
 
-/***/ 2:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-
-/***/ 20:
-/*!*******************************************************!*\
-  !*** E:/wechatproject/wei-blog/store/modules/user.js ***!
-  \*******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 21));var _user = __webpack_require__(/*! @/api/user.js */ 24);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(o);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}
-var TOKEN_KEY = 'token';
-var USER_INFO_KEY = 'user-info';var _default =
-
-{
-  namespaced: true,
-  state: function state() {return {
-      // 用户token(同步)
-      token: uni.getStorageSync(TOKEN_KEY) || '',
-      // 用户信息(同步)
-      userInfo: uni.getStorageSync(USER_INFO_KEY) || {} };},
-
-  mutations: {
-    /**
-                * 保存token
-                */
-    setToken: function setToken(state, token) {
-      state.token = token;
-      this.commit('user/saveToToken');
-    },
-    /**
-        * 保存userInfo
-        */
-    setUserInfo: function setUserInfo(state, userInfo) {
-      state.userInfo = userInfo;
-      this.commit('user/saveToUserInfo');
-    },
-    /**
-        * 保存token到本地
-        */
-    saveToToken: function saveToToken(state) {
-      uni.setStorage({
-        key: TOKEN_KEY,
-        data: state.token });
-
-    },
-    /**
-        * 保存userInfo到本地存储
-        */
-    saveToUserInfo: function saveToUserInfo(state) {
-      uni.setStorage({
-        key: USER_INFO_KEY,
-        data: state.userInfo });
-
-    },
-    /**
-        * 删除token
-        */
-    removeToken: function removeToken(state) {
-      state.token = '';
-      this.commit('user/saveToToken');
-    },
-    /**
-        * 删除用户信息
-        */
-    removeUserInfo: function removeUserInfo(state) {
-      state.userInfo = {};
-      this.commit('user/saveToUserInfo');
-    } },
-
-  // actions中完成异步操作
-  actions: {
-    /**
-              * 完成登录 context vuex的实例
-              */
-    login: function login(context, userProfile) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var userInfo, _yield$_login, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
-                userInfo = userProfile.userInfo;
-                // 调用登录接口，网站的登录，非微信的
-                _context.next = 3;return (0, _user.login)({
-                  signature: userProfile.signature,
-                  iv: userProfile.iv,
-                  nickName: userInfo.nickName,
-                  gender: userInfo.gender,
-                  city: userInfo.city,
-                  province: userInfo.province,
-                  avatarUrl: userInfo.avatarUrl });case 3:_yield$_login = _context.sent;res = _yield$_login.data;
-
-                // 登录逻辑
-                _this.commit('user/setToken', res.token);
-                _this.commit('user/setUserInfo', userInfo);case 7:case "end":return _context.stop();}}}, _callee);}))();
-    },
-    /**
-        * 退出登录
-        */
-    logout: function logout(context) {
-      this.commit('user/removeToken');
-      this.commit('user/removeUserInfo');
-    },
-    /**
-        * 进行登录的判定
-        */
-    isLogin: function isLogin(context) {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _yield$uni$showModal, _yield$uni$showModal2, error, res, cancel, confirm;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (!
-                context.state.token) {_context2.next = 2;break;}return _context2.abrupt("return",
-                true);case 2:_context2.next = 4;return (
-
-
-                  uni.showModal({
-                    title: '登录之后才可以进行后续操作',
-                    content: '立即跳转到登录页面？(登录后自动返回当前页面)' }));case 4:_yield$uni$showModal = _context2.sent;_yield$uni$showModal2 = _slicedToArray(_yield$uni$showModal, 2);error = _yield$uni$showModal2[0];res = _yield$uni$showModal2[1];
-
-                // 对象的解构赋值
-                cancel = res.cancel, confirm = res.confirm;
-                if (confirm) {
-                  uni.navigateTo({
-                    url: '/subpkg/pages/login-page/login-page' });
-
-                }return _context2.abrupt("return",
-                false);case 11:case "end":return _context2.stop();}}}, _callee2);}))();
-    } } };exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
-
-/***/ }),
-
-/***/ 200:
+/***/ 214:
 /*!***************************************************************************************************!*\
   !*** E:/wechatproject/wei-blog/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-i18n.js ***!
   \***************************************************************************************************/
@@ -7286,7 +7297,7 @@ mescrollI18n;exports.default = _default;
 
 /***/ }),
 
-/***/ 201:
+/***/ 215:
 /*!************************************************************************************************!*\
   !*** E:/wechatproject/wei-blog/uni_modules/mescroll-uni/components/mescroll-uni/wxs/mixins.js ***!
   \************************************************************************************************/
@@ -7403,17 +7414,6 @@ var WxsMixin = {
 
 
 WxsMixin;exports.default = _default;
-
-/***/ }),
-
-/***/ 21:
-/*!**********************************************************!*\
-  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
-  \**********************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! regenerator-runtime */ 22);
 
 /***/ }),
 
@@ -8205,15 +8205,56 @@ if (hadRuntime) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.login = login;var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 25));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+Object.defineProperty(exports, "__esModule", { value: true });exports.login = login;exports.userFollow = userFollow;exports.userArticleComment = userArticleComment;exports.userPraise = userPraise;exports.userCollect = userCollect;var _request = _interopRequireDefault(__webpack_require__(/*! ../utils/request.js */ 25));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 /**
-                                                                                                                                                                                                                                                                      * 用户登录
-                                                                                                                                                                                                                                                                      */
+                                                                                                                                                                                                                                                                                                                                                                                                                        * 用户登录
+                                                                                                                                                                                                                                                                                                                                                                                                                        */
 function login(data) {
   return (0, _request.default)({
     url: '/sys/login',
     method: 'POST',
+    data: data });
+
+}
+
+/**
+   * 关注用户
+   */
+function userFollow(data) {
+  return (0, _request.default)({
+    url: '/user/follow',
+    data: data });
+
+}
+
+/**
+   * 发表评论
+   */
+function userArticleComment(data) {
+  return (0, _request.default)({
+    url: '/user/article/comment',
+    method: 'POST',
+    data: data });
+
+}
+
+/**
+   * 用户点赞
+   */
+function userPraise(data) {
+  return (0, _request.default)({
+    url: '/user/praise',
+    data: data });
+
+}
+
+/**
+   * 用户收藏
+   */
+function userCollect(data) {
+  return (0, _request.default)({
+    url: '/user/collect',
     data: data });
 
 }
@@ -8228,7 +8269,9 @@ function login(data) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var BASE_URL = 'https://api.imooc-blog.lgdsunday.club/api';
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+var _store = _interopRequireDefault(__webpack_require__(/*! @/store */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var BASE_URL = 'https://api.imooc-blog.lgdsunday.club/api'; // 从vuex中拿取对应的token
 
 
 function request(_ref) {var url = _ref.url,data = _ref.data,method = _ref.method;
@@ -8237,6 +8280,9 @@ function request(_ref) {var url = _ref.url,data = _ref.data,method = _ref.method
       url: BASE_URL + url,
       data: data,
       method: method,
+      header: {
+        Authorization: _store.default.state.user.token },
+
       success: function success(_ref2) {var data = _ref2.data;
         if (data.success) {
           // 请求成功
@@ -8266,6 +8312,146 @@ function request(_ref) {var url = _ref.url,data = _ref.data,method = _ref.method
 }var _default =
 
 request;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 276:
+/*!*********************************************************************************************************!*\
+  !*** E:/wechatproject/wei-blog/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
+  \*********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.createAnimation = createAnimation;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // const defaultOption = {
+// 	duration: 300,
+// 	timingFunction: 'linear',
+// 	delay: 0,
+// 	transformOrigin: '50% 50% 0'
+// }
+var
+
+
+MPAnimation = /*#__PURE__*/function () {
+  function MPAnimation(options, _this) {_classCallCheck(this, MPAnimation);
+    this.options = options;
+    this.animation = uni.createAnimation(options);
+    this.currentStepAnimates = {};
+    this.next = 0;
+    this.$ = _this;
+
+  }_createClass(MPAnimation, [{ key: "_nvuePushAnimates", value: function _nvuePushAnimates(
+
+    type, args) {
+      var aniObj = this.currentStepAnimates[this.next];
+      var styles = {};
+      if (!aniObj) {
+        styles = {
+          styles: {},
+          config: {} };
+
+      } else {
+        styles = aniObj;
+      }
+      if (animateTypes1.includes(type)) {
+        if (!styles.styles.transform) {
+          styles.styles.transform = '';
+        }
+        var unit = '';
+        if (type === 'rotate') {
+          unit = 'deg';
+        }
+        styles.styles.transform += "".concat(type, "(").concat(args + unit, ") ");
+      } else {
+        styles.styles[type] = "".concat(args);
+      }
+      this.currentStepAnimates[this.next] = styles;
+    } }, { key: "_animateRun", value: function _animateRun()
+    {var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var ref = this.$.$refs['ani'].ref;
+      if (!ref) return;
+      return new Promise(function (resolve, reject) {
+        nvueAnimation.transition(ref, _objectSpread({
+          styles: styles },
+        config),
+        function (res) {
+          resolve();
+        });
+      });
+    } }, { key: "_nvueNextAnimate", value: function _nvueNextAnimate(
+
+    animates) {var _this2 = this;var step = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;var fn = arguments.length > 2 ? arguments[2] : undefined;
+      var obj = animates[step];
+      if (obj) {var
+
+        styles =
+
+        obj.styles,config = obj.config;
+        this._animateRun(styles, config).then(function () {
+          step += 1;
+          _this2._nvueNextAnimate(animates, step, fn);
+        });
+      } else {
+        this.currentStepAnimates = {};
+        typeof fn === 'function' && fn();
+        this.isEnd = true;
+      }
+    } }, { key: "step", value: function step()
+
+    {var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      this.animation.step(config);
+
+
+
+
+
+
+      return this;
+    } }, { key: "run", value: function run(
+
+    fn) {
+
+      this.$.animationData = this.animation.export();
+      this.$.timer = setTimeout(function () {
+        typeof fn === 'function' && fn();
+      }, this.$.durationTime);
+
+
+
+
+
+
+
+
+    } }]);return MPAnimation;}();
+
+
+
+var animateTypes1 = ['matrix', 'matrix3d', 'rotate', 'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scale3d',
+'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'translate', 'translate3d', 'translateX', 'translateY',
+'translateZ'];
+
+var animateTypes2 = ['opacity', 'backgroundColor'];
+var animateTypes3 = ['width', 'height', 'left', 'right', 'top', 'bottom'];
+animateTypes1.concat(animateTypes2, animateTypes3).forEach(function (type) {
+  MPAnimation.prototype[type] = function () {var _this$animation;
+
+    (_this$animation = this.animation)[type].apply(_this$animation, arguments);
+
+
+
+
+    return this;
+  };
+});
+
+function createAnimation(option, _this) {
+  if (!_this) return;
+  clearTimeout(_this.timer);
+  return new MPAnimation(option, _this);
+}
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
@@ -13797,7 +13983,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -13818,14 +14004,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -13911,7 +14097,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_NAME":"wei-blog","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));

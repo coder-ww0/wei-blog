@@ -80,10 +80,10 @@ var components
 try {
   components = {
     articleCommentItem: function() {
-      return __webpack_require__.e(/*! import() | components/article-comment-item/article-comment-item */ "components/article-comment-item/article-comment-item").then(__webpack_require__.bind(null, /*! @/components/article-comment-item/article-comment-item.vue */ 236))
+      return __webpack_require__.e(/*! import() | components/article-comment-item/article-comment-item */ "components/article-comment-item/article-comment-item").then(__webpack_require__.bind(null, /*! @/components/article-comment-item/article-comment-item.vue */ 250))
     },
     mescrollBody: function() {
-      return Promise.all(/*! import() | uni_modules/mescroll-uni/components/mescroll-body/mescroll-body */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/mescroll-uni/components/mescroll-body/mescroll-body")]).then(__webpack_require__.bind(null, /*! @/uni_modules/mescroll-uni/components/mescroll-body/mescroll-body.vue */ 193))
+      return Promise.all(/*! import() | uni_modules/mescroll-uni/components/mescroll-body/mescroll-body */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/mescroll-uni/components/mescroll-body/mescroll-body")]).then(__webpack_require__.bind(null, /*! @/uni_modules/mescroll-uni/components/mescroll-body/mescroll-body.vue */ 207))
     }
   }
 } catch (e) {
@@ -271,17 +271,33 @@ var _article = __webpack_require__(/*! ../../api/article.js */ 63);function _int
         this.mescroll = this.$refs.mescrollRef.mescroll;
       }
       return this.mescroll;
+    },
+    /**
+        * 为commentList 增加一个评论
+        */
+    addCommentList: function addCommentList(data) {
+      this.commentList.unshift(data);
     } },
 
-  watch: {
-    articleId: {
-      handler: function handler(val) {
-        if (val) {
-          this.loadCommentList();
-        }
-        console.log(this.articleId);
-        immediate: true;
-      } } } };exports.default = _default;
+  created: function created() {
+    this.loadCommentList();
+  }
+  // watch: {
+  // 	articleId: {
+  // 		handler(val) {
+  // 			console.log('val', val)
+  // 			if (val) {
+  // 				console.log('watch起作用')
+  // 				console.log(this.articleId);
+  // 				this.loadCommentList();
+  // 			}
+
+
+  // 			immediate: true;
+  // 		}
+  // 	}
+  // }
+};exports.default = _default;
 
 /***/ }),
 

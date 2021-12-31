@@ -19,8 +19,12 @@
 						</view>
 					</view>
 					<view class="detail-right">
-						<!-- 关注按钮 -->
-						<button class="follow" size="mini" @click="onFollowClick">关注</button>
+						<!-- 关注按钮  primary为绿色 -->
+						<button class="follow" 
+						:type="articleData.isFollow ? 'primary' : 'default'"
+						size="mini" @click="onFollowClick" :loading="isFollowLoading">
+						{{ articleData.isFollow ? '已关注' : '关注'}}
+						</button>
 					</view>
 				</view>
 				<!-- 文章内容 -->
@@ -29,11 +33,24 @@
 				<mp-html class="markdown_views" :content="addClassFromHTML(articleData.content)" scroll-table />
 				<!-- 评论列表 -->
 				<!-- <view class="comment-box"> -->
-				<article-comment-list v-bind:articleId="articleId" ref="mescrollItem"></article-comment-list>
+				<article-comment-list :articleId="articleId" ref="mescrollItem"></article-comment-list>
 				<!-- </view> -->
 			</block>
 			<!-- 底部功能区 -->
-			<article-operate></article-operate>
+			<article-operate 
+			:articleData="articleData"
+			@changePraise="onChangePraise"
+			@commentClick="onComment"
+			@changeCollect="onChangeCollect"></article-operate>
+			<!-- 输入评论的popup -->
+			<uni-popup ref="popup" type="bottom" @change="onCommitPopupChange">
+				<!-- 采用v-if进行组件的销毁从而清空输入框数据 -->
+				<article-comment-commit
+				:articleId="articleId"
+				:articleData="articleData"
+				@success="onSendSuccess"
+				v-if="isShowCommit"></article-comment-commit>
+			</uni-popup>
 		</view>
 	</page-meta>
 </template>
@@ -44,6 +61,7 @@ import MescrollCompMixin from '@/uni_modules/mescroll-uni/components/mescroll-un
 import mpHtml from '@/uni_modules/mp-html/components/mp-html/mp-html';
 import { getArticleDetail } from '@/api/article.js';
 import { mapActions } from 'vuex';
+import { userFollow } from '@/api/user.js';
 
 export default {
 	// 注册组件
@@ -58,7 +76,13 @@ export default {
 			// 文章id(传参必须)
 			articleId: '',
 			// 文章详情数据
-			articleData: []
+			articleData: null,
+			// 关注用户的loading(点击关注时出现的loading图标)
+			isFollowLoading: false,
+			// popup的显示状态
+			isShowCommit: false,
+			// 解决定时器追加的问题
+			timer: ''
 		};
 	},
 	/**
@@ -133,6 +157,59 @@ export default {
 			if (!isLogin) {
 				return;
 			}
+			// 是否关注用户接口
+			this.isFollowLoading = true;
+			const { data : res} = await userFollow({
+				author: this.author,
+				isFollow: !this.articleData.isFollow
+			});
+			// 修改用户数据（有些场景下修改了对应的页面，请求了对应的接口，需要重新进行页面的刷新）
+			this.articleData.isFollow = !this.articleData.isFollow;
+			this.isFollowLoading = false;
+		},
+		/**
+		 * 点击发表评论，子组件传来的事件
+		 */
+		onComment() {
+			// 通过调用popup实例的方法，进行弹出层的弹出
+			this.$refs.popup.open();
+		},
+		/**
+		 * 发表评论的切换事件
+		 */
+		onCommitPopupChange(e) {
+			// 修改对应的标记，当popup关闭时，为了动画平顺，进行延迟处理
+			if (e.show) {
+				this.isShowCommit = e.show;
+			} else {
+				console.log(this.timer)
+				this.timer = setTimeout(() => {
+					this.isShowCommit = e.show
+				}, 2000)
+				// 定时器需要进行清楚，或者重复点击容易出现bug
+				clearTimeout(this.timer);
+			}
+		},
+		/**
+		 * 评论发表成功，需要关闭popup弹出层
+		 */
+		onSendSuccess(data) {
+			this.$refs.popup.close();
+			this.isShowCommit = false;
+			// 为commentList增加数据 (this.$refs.mescrollItem为组件实例)
+			this.$refs.mescrollItem.addCommentList(data);
+		},
+		/**
+		 * 点赞处理的回调
+		 */
+		onChangePraise(isPraise) {
+			this.articleData.isPraise = isPraise;
+		},
+		/**
+		 * 收藏处理回调
+		 */
+		onChangeCollect(isCollect) {
+			this.articleData.isCollect = isCollect;
 		}
 	}
 };
