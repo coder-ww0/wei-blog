@@ -1,14 +1,24 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.warn('当前组件仅支持 uni_modules 目录结构 ，请升级 HBuilderX 到 3.1.0 版本以上！')
-			console.log('App Launch')
+			/**
+			 * 条件编译
+			 * 1. 以#ifdef %PLATFORM%开头，以#endif结尾: 仅在某平台存在
+			 * 2.  以#ifndef %PLATFORM%开头，以#endif结尾: 除了某平台均存在
+			 */
+			/* #ifdef H5 */
+			console.log('当前处于H5编译平台')
+			/* #endif */
+			/* #ifndef H5 */
+			console.log('当前处于非H5编译平台')
+			/* #endif */
+			
 		},
 		onShow: function() {
-			console.log('App Show')
+			
 		},
 		onHide: function() {
-			console.log('App Hide')
+			
 		}
 	}
 </script>

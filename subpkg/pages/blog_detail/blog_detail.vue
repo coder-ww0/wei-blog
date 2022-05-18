@@ -1,5 +1,7 @@
 <template>
+	<!-- #ifndef H5 -->
 	<page-meta root-font-size="52px">
+		<!-- #endif -->
 		<view class="detail-container">
 			<!-- 文章内容区域 -->
 			<block v-if="articleData">
@@ -20,10 +22,8 @@
 					</view>
 					<view class="detail-right">
 						<!-- 关注按钮  primary为绿色 -->
-						<button class="follow" 
-						:type="articleData.isFollow ? 'primary' : 'default'"
-						size="mini" @click="onFollowClick" :loading="isFollowLoading">
-						{{ articleData.isFollow ? '已关注' : '关注'}}
+						<button class="follow" :type="articleData.isFollow ? 'primary' : 'default'" size="mini" @click="onFollowClick" :loading="isFollowLoading">
+							{{ articleData.isFollow ? '已关注' : '关注' }}
 						</button>
 					</view>
 				</view>
@@ -37,22 +37,16 @@
 				<!-- </view> -->
 			</block>
 			<!-- 底部功能区 -->
-			<article-operate 
-			:articleData="articleData"
-			@changePraise="onChangePraise"
-			@commentClick="onComment"
-			@changeCollect="onChangeCollect"></article-operate>
+			<article-operate :articleData="articleData" @changePraise="onChangePraise" @commentClick="onComment" @changeCollect="onChangeCollect"></article-operate>
 			<!-- 输入评论的popup -->
 			<uni-popup ref="popup" type="bottom" @change="onCommitPopupChange">
 				<!-- 采用v-if进行组件的销毁从而清空输入框数据 -->
-				<article-comment-commit
-				:articleId="articleId"
-				:articleData="articleData"
-				@success="onSendSuccess"
-				v-if="isShowCommit"></article-comment-commit>
+				<article-comment-commit :articleId="articleId" :articleData="articleData" @success="onSendSuccess" v-if="isShowCommit"></article-comment-commit>
 			</uni-popup>
 		</view>
+		<!-- #ifndef H5 -->
 	</page-meta>
+	<!-- #endif -->
 </template>
 
 <script>
@@ -159,7 +153,7 @@ export default {
 			}
 			// 是否关注用户接口
 			this.isFollowLoading = true;
-			const { data : res} = await userFollow({
+			const { data: res } = await userFollow({
 				author: this.author,
 				isFollow: !this.articleData.isFollow
 			});
@@ -182,10 +176,10 @@ export default {
 			if (e.show) {
 				this.isShowCommit = e.show;
 			} else {
-				console.log(this.timer)
+				console.log(this.timer);
 				this.timer = setTimeout(() => {
-					this.isShowCommit = e.show
-				}, 2000)
+					this.isShowCommit = e.show;
+				}, 2000);
 				// 定时器需要进行清楚，或者重复点击容易出现bug
 				clearTimeout(this.timer);
 			}
@@ -216,7 +210,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/styles/article-detail.scss';
+// @import '~@/styles/article-detail.scss';
 .detail-container {
 	padding: $uni-spacing-col-base $uni-spacing-row-base;
 	padding-bottom: 68px;

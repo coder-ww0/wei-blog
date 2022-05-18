@@ -28,8 +28,8 @@
 .hot-container .tab-sticky.data-v-41251cbc {
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
   z-index: 999;
+  top: -1px;
 }
 .hot-container .swiper.data-v-41251cbc {
   height: 750rpx;

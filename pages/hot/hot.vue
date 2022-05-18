@@ -199,9 +199,15 @@ export default {
 
 	.tab-sticky {
 		position: sticky;
-		top: 0;
+		// top: 0;
 		// background-color: #fff;
 		z-index: 999;
+		/* #ifndef H5 */
+		top: -1px;
+		/* #endif */
+		/* #ifdef H5 */
+		top: 44px;
+		/* #endif */
 	}
 	.swiper {
 		height: 750rpx;

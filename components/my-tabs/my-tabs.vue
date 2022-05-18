@@ -224,4 +224,14 @@ export default {
 		}
 	}
 }
+// 将h5平台上的粗滚动条进行隐藏
+  /* #ifdef H5 */
+  /deep/.uni-scroll-view::-webkit-scrollbar {
+    display: none;
+  }
+
+  /deep/.uni-scroll-view {
+    scrollbar-width: none;
+  }
+  /* #endif */
 </style>

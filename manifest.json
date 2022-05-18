@@ -55,5 +55,8 @@
             "checkSiteMap" : false /* 关闭微信的索引*/
         },
         "usingComponents" : true
+    },
+    "h5" : {
+        "template" : "index.html"
     }
 }
